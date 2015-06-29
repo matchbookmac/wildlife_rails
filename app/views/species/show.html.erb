@@ -1,4 +1,20 @@
 <h1><%= @species.name %></h1>
+
+<% if @species.sightings.any? %>
+  <ul>
+    <% @species.sightings.each do |sighting| %>
+      <li>
+        <ul>
+          <li><%= sighting.latitude %></li>
+          <li><%= sighting.longitude %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>There are no sightings for this species yet :(</h3>
+<% end %>
+<%= link_to "Add Sighting", new_species_sighting_path(@species) %>
 <%= link_to "Back to Species", species_index_path %> |
 <%= link_to "Edit", edit_species_path(@species) %> |
 <%= link_to "Delete", species_path(@species), data: { confirm: "Are you sure?" }, method: :delete %>
