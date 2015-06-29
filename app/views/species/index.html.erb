@@ -1,0 +1,15 @@
+<h1>Current Species:</h1>
+
+<% if @species.any? %>
+  <ul>
+    <% @species.each do |species| %>
+      <li><%= link_to species.name, species_path(species) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>Sorry, there are not any species yet.</h3>
+<% end %>
+
+<p>
+  <%= link_to "Add a Species", new_species_path %>
+</p>
